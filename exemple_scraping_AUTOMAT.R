@@ -1,20 +1,21 @@
 ###############################################################################
 ######################  SCRAPING IDEAS-REPEC : un exemple #####################
+######################  Author : Jean-Baptiste Guiffard   #####################
 ###############################################################################
 
 
 
 # Package
 # Installation
-#install.packages("rvest")
+# install.packages("rvest")
 
 library(rvest)
 
 
-# Définir une variable correspondant au nom de la page des économistes référencés NEP.DEV
+# DÃ©finir une variable correspondant au nom de la page des Ã©conomistes rÃ©fÃ©rencÃ©s NEP.DEV
 url_authors <- "https://ideas.repec.org/i/edev.html"
 
-# Récupération de la liste des auteurs NEP.DEV
+# RÃ©cupÃ©ration de la liste des auteurs NEP.DEV
 html_authors <- read_html(url_authors, encoding="UTF-8")
 
 liste_authors <- html_nodes(html_authors,"td") %>% html_nodes("a") %>% html_text() #noms
@@ -30,7 +31,7 @@ df_authors <- data.frame(authors = liste_authors,
 dim(df_authors)
 View(df_authors)
 
-# Sélection auteurs (20-30)
+# SÃ©lection auteurs (20-30)
 
 df_authors_select <- df_authors[c(20:30),]
 
